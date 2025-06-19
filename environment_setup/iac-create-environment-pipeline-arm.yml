@@ -11,7 +11,9 @@ stages:
   - job: "Provision_Dev"
     displayName: "Provision Dev resources"
     pool:
-      vmImage: 'ubuntu-latest'
+      name: 'SelfHosted'   # or whatever pool you registered
+      demands:
+        - Agent.OS -equals Linux
     timeoutInMinutes: 0
     steps:
     - task: AzureResourceGroupDeployment@2
